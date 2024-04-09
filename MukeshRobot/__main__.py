@@ -1,30 +1,3 @@
-import importlib
-import re
-import time
-import asyncio
-from platform import python_version as y
-from sys import argv
-from pyrogram import __version__ as pyrover
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update
-from telegram import __version__ as telever
-from telegram.error import (
-    BadRequest,
-    ChatMigrated,
-    NetworkError,
-    TelegramError,
-    TimedOut,
-    Unauthorized,
-)
-from telegram.ext import (
-    CallbackContext,
-    CallbackQueryHandler,
-    CommandHandler,
-    Filters,
-    MessageHandler,
-)
-from telegram.ext.dispatcher import DispatcherHandlerStop
-from telegram.utils.helpers import escape_markdown
-from telethon import __version__ as tlhver
 
 import MukeshRobot.modules.no_sql.users_db as sql
 from MukeshRobot import (
@@ -75,24 +48,18 @@ PM_START_TEX = """
 
 
 PM_START_TEXT = """ 
-*ʜᴇʏ* {} , 🥀
-*๏ ɪ'ᴍ {} ʜᴇʀᴇ ᴛᴏ ʜᴇʟᴘ ʏᴏᴜ ᴍᴀɴᴀɢᴇ ʏᴏᴜʀ ɢʀᴏᴜᴘs!
-ʜɪᴛ ʜᴇʟᴘ ᴛᴏ ғɪɴᴅ ᴏᴜᴛ ᴍᴏʀᴇ ᴀʙᴏᴜᴛ ʜᴏᴡ ᴛᴏ ᴜsᴇ ᴍᴇ ɪɴ ᴍʏ ғᴜʟʟ ᴘᴏᴛᴇɴᴛɪᴀʟ!*
-➻ *ᴛʜᴇ ᴍᴏsᴛ ᴩᴏᴡᴇʀғᴜʟ ᴛᴇʟᴇɢʀᴀᴍ ɢʀᴏᴜᴩ ᴍᴀɴᴀɢᴇᴍᴇɴᴛ  ➕ ᴍᴜsɪᴄ ᴍᴀɴᴀɢᴇᴍᴇɴᴛ ʙᴏᴛ ᴀɴᴅ ɪ ʜᴀᴠᴇ sᴏᴍᴇ ᴀᴡᴇsᴏᴍᴇ ᴀɴᴅ ᴜsᴇғᴜʟ ғᴇᴀᴛᴜʀᴇs.*
+*𝑯𝑬𝒀* {} , 🥀
+*๏ 𝐼'𝑀 {} 𝐻𝑒𝑟𝑒 𝑡𝑜 ℎ𝑒𝑙𝑝 𝑦𝑜𝑢 𝑚𝑎𝑛𝑎𝑔𝑒 𝑦𝑜𝑢𝑟 𝑔𝑟𝑜𝑢𝑝𝑠!
+𝐻𝑎𝑡𝑠𝑢𝑛𝑒 𝑀𝑖𝑘𝑢 𝑖𝑠 𝑎 𝑣𝑖𝑟𝑡𝑢𝑎𝑙 𝑝𝑜𝑝 𝑠𝑡𝑎𝑟.*
+➛ *𝑆ℎ𝑒 ℎ𝑎𝑠 𝑒𝑛𝑡𝑒𝑟𝑒𝑑 𝑜𝑢𝑟 𝑤𝑜𝑟𝑙𝑑, 𝑗𝑢𝑠𝑡 𝑎𝑠 𝑤𝑒 𝑎𝑟𝑒 𝑎𝑙𝑙 𝑒𝑛𝑡𝑒𝑟𝑖𝑛𝑔 ℎ𝑒𝑟 𝑤𝑜𝑟𝑙𝑑.*
 ─────────────────
-   *➻ ᴜsᴇʀs »* {}
-   *➻ ᴄʜᴀᴛs »* {}
+   *➛ 𝑼𝑺𝑬𝑹𝑺 »* {}
+   *➛ 𝑪𝑯𝑨𝑻𝑺 »* {}
 ─────────────────
 """
 
 buttons = [
-    [
-        InlineKeyboardButton(text="🏡", callback_data="mukesh_back"),
-        InlineKeyboardButton(text="🛡️", callback_data="mukesh_"),
-        InlineKeyboardButton(text="💳", callback_data="source_"),
-        InlineKeyboardButton(text="🧑‍💻", url=f"tg://user?id={OWNER_ID}"),
-        InlineKeyboardButton(text="🖥️", callback_data="Main_help"),
-     ],
+
     [
         InlineKeyboardButton(
             text="Aᴅᴅ Mᴇ ᴛᴏ Yᴏᴜʀ Gʀᴏᴜᴘ",
@@ -107,7 +74,7 @@ buttons = [
 ]
 
 HELP_STRINGS = f"""
-» *{BOT_NAME}  ᴄʟɪᴄᴋ ᴏɴ ᴛʜᴇ ʙᴜᴛᴛᴏɴ ʙᴇʟʟᴏᴡ ᴛᴏ ɢᴇᴛ ᴅᴇsᴄʀɪᴘᴛɪᴏɴ ᴀʙᴏᴜᴛ sᴘᴇᴄɪғɪᴄs ᴄᴏᴍᴍᴀɴᴅ*"""
+» *{BOT_NAME}  𝑪𝒍𝒊𝒄𝒌 𝒐𝒏 𝒕𝒉𝒆 𝒃𝒖𝒕𝒕𝒐𝒏 𝒃𝒆𝒍𝒐𝒘 𝒕𝒐 𝒈𝒆𝒕 𝒅𝒆𝒔𝒄𝒓𝒊𝒑𝒕𝒊𝒐𝒏 𝒂𝒃𝒐𝒖𝒕 𝒔𝒑𝒆𝒄𝒊𝒇𝒊𝒄 𝒄𝒐𝒎𝒎𝒂𝒏𝒅*"""
 
 DONATE_STRING = f"""ʜᴇʏ ʙᴀʙʏ,
   ʜᴀᴩᴩʏ ᴛᴏ ʜᴇᴀʀ ᴛʜᴀᴛ ʏᴏᴜ ᴡᴀɴɴᴀ ᴅᴏɴᴀᴛᴇ.
