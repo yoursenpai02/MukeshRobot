@@ -1,4 +1,3 @@
-thi
 import importlib
 import re
 import time
