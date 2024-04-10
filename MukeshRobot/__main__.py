@@ -411,11 +411,21 @@ def Mukesh_about_callback(update: Update, context: CallbackContext):
                     [
                         InlineKeyboardButton(
                             text="🏡 sᴜᴩᴩᴏʀᴛ", url=f"https://t.me/{SUPPORT_CHAT}"
+                            ),
+                        InlineKeyboardButton(
+                            text="ᴄᴏᴍᴍᴀɴᴅs 💁", callback_data="Main_help"
+                        ),
                     ],
                     
                     [
                         InlineKeyboardButton(
-                            text="🥀 ᴅᴇᴠᴇʟᴏᴩᴇʀ", url=f"tg://user?id={OWNER_ID}"  
+                            text="🥀 ᴅᴇᴠᴇʟᴏᴩᴇʀ", url=f"tg://user?id={OWNER_ID}"
+                        ),
+                        InlineKeyboardButton(
+                            text="🥀sᴏᴜʀᴄᴇ",
+                            callback_data="source_",
+                        ),  
+
                     ],
                     [
                         InlineKeyboardButton(text="◁", callback_data="mukesh_"),
