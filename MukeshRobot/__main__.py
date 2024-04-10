@@ -89,12 +89,15 @@ buttons = [
     
     [
         InlineKeyboardButton(
-            text="Aᴅᴅ Mᴇ ᴛᴏ Yᴏᴜʀ Gʀᴏᴜᴘ",
+            text="┈ ⋞ 〈 𝓐𝓭𝓭  °  𝓜𝓮  °  𝓑𝓪𝓫𝔂 〉 ⋟ ┈",
             url=f"https://t.me/{dispatcher.bot.username}?startgroup=true",
         ),
     ],
     [
-        InlineKeyboardButton(text="📚 ʜᴇʟᴘ ᴀɴᴅ ᴄᴏᴍᴍᴀɴᴅs", callback_data="Main_help"),
+        InlineKeyboardButton(text="✧⋄⋆⋅⋆⋄ ℌ𝔢𝔩𝔭 𝔄𝔫𝔡 ℭ𝔬𝔪𝔪𝔫𝔞𝔡𝔰 ⋄⋆⋅⋆⋄✧", callback_data="Main_help"),
+    ],
+    [
+        InlineKeyboardButton(text="M¥ Må§†êr", url=f"tg://user?id={OWNER_ID}"),
     ],
     
 
