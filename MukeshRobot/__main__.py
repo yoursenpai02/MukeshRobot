@@ -200,27 +200,23 @@ def start(update: Update, context: CallbackContext):
                     send_settings(match.group(1), update.effective_user.id, True)
 
             elif args[0][1:].isdigit() and "rᴜʟᴇs" in IMPORTED:
-                IMPORTED["rᴜʟᴇs"].send_rules(update, args[0], from_pm=True)
-else:
+                IMPORTED["rᴜʟᴇs"].send_rules(update, args[0], from_pm=Tr ue)
+       else:
             first_name = update.effective_user.first_name
             
             x=update.effective_message.reply_sticker(
-                "CAACAgUAAxkBAAI33mLYLNLilbRI-sKAAob0P7koTEJNAAIOBAACl42QVKnra4sdzC_uKQQ)
+                "CAACAgUAAxkBAAI33mLYLNLilbRI-sKAAob0P7koTEJNAAIOBAACl42QVKnra4sdzC_uKQQ")
             x.delete()
             usr = update.effective_user
             lol = update.effective_message.reply_text(
                 PM_START_TEX.format(usr.first_name), parse_mode=ParseMode.MARKDOWN
             )
             time.sleep(0.4)
-            lol.edit_text("Lᴏᴀᴅɪɴɢ 20%")
+            lol.edit_text("❤")
             time.sleep(0.5)
-            lol.edit_text("Lᴏᴀᴅɪɴɢ 40%")
+            lol.edit_text("⚡")
             time.sleep(0.3)
-            lol.edit_text("Lᴏᴀᴅɪɴɢ 60%")
-            time.sleep(0.3)
-            lol.edit_text("Lᴏᴀᴅɪɴɢ 80%")
-            time.sleep(0.3)
-            lol.edit_text("Lᴏᴀᴅɪɴɢ 100%")
+            lol.edit_text("ꜱᴛᴀʀᴛɪɴɢ... ")
             time.sleep(0.4)
             lol.delete()
             
@@ -228,7 +224,8 @@ else:
                 reply_markup=InlineKeyboardMarkup(buttons),
                 parse_mode=ParseMode.MARKDOWN,
                 timeout=60,
-)
+            )
+    
         
     else:
         update.effective_message.reply_photo(
