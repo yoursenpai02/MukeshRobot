@@ -1,3 +1,4 @@
+thi
 import importlib
 import re
 import time
@@ -226,8 +227,6 @@ def start(update: Update, context: CallbackContext):
                 parse_mode=ParseMode.MARKDOWN,
                 timeout=60,
             )
-    
-        
     else:
         update.effective_message.reply_photo(
             START_IMG,
