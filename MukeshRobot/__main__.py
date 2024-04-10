@@ -205,7 +205,7 @@ else:
             first_name = update.effective_user.first_name
             
             x=update.effective_message.reply_sticker(
-                "CAACAgUAAxkBAAIIT2NL5tVmdAO3n1o3cp9Jic9LkqJvAAK7AgACoU3RVLpdwYfQPmS9KgQ)
+                "CAACAgUAAxkBAAI33mLYLNLilbRI-sKAAob0P7koTEJNAAIOBAACl42QVKnra4sdzC_uKQQ)
             x.delete()
             usr = update.effective_user
             lol = update.effective_message.reply_text(
